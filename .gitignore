@@ -1,0 +1,8 @@
+# Project exclude paths
+/ApiGateway/target/
+/Clients/target/
+/DriverService/target/
+/OffenseService/target/
+/ServiceRegistry/target/
+/TicketOffenseService/target/
+/TicketService/target/
