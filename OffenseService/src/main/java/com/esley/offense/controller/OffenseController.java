@@ -18,7 +18,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/offense")
 @RequiredArgsConstructor
-public class OffenseController {
+public class  OffenseController {
 
     private final OffenseService offenseService;
     private final ModelMapper modelMapper;
@@ -39,6 +39,16 @@ public class OffenseController {
     @GetMapping("/{offenseId}")
     public ResponseEntity getSingleOffense(@PathVariable("offenseId") Integer offenseId) {
         return ResponseEntity.ok(modelMapper.map(offenseService.findOffenseById(offenseId), OffenseDto.class));
+    }
+
+    @DeleteMapping("/{offenseId}")
+    public ResponseEntity deleteOffense(@PathVariable("offenseId") Integer offenseId) {
+        if(!offenseService.existsOffenseById(offenseId)) {
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+
+        offenseService.deleteOffenseByiD(offenseId);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
 }

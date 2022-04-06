@@ -37,7 +37,7 @@ public class DriverService {
 
     @Transactional(readOnly = true) // dirty checking - sprawdzanie i nadpisywanie danych
     public Driver findDriverByEmail(String email) {
-        return driverRepository.findByEmail(email).orElseThrow(() -> new DriverNotFoundException(format("Driver with email: %s not found!", email)));
+        return driverRepository.findByEmail(email).orElseThrow(() -> new DriverNotFoundException(format("Driver with id: %s not found!", email)));
     }
 
     public Optional<Driver> findByDriverIdOptional(Integer id) {

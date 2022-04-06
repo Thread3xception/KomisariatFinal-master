@@ -39,7 +39,7 @@ public class DriverToDriverDtoConverter implements Converter<Driver, DriverDto> 
 
         dto.add(linkTo(methodOn(DriverController.class).getAllDrivers(Pageable.unpaged())).withRel("all-drivers"));
         dto.add(linkTo(methodOn(DriverController.class).getDriverTickets(source.getId())).withRel("all-tickets-of-driver"));
-        dto.add(linkTo(methodOn(DriverController.class).getSingleDriver(source.getEmail())).withRel("single-driver-details"));
+        dto.add(linkTo(methodOn(DriverController.class).getSingleDriver(source.getId())).withRel("single-driver-details"));
         dto.add(linkTo(methodOn(DriverController.class).getSingleTicket(source.getId())).withRel("single-ticket-details"));
 
         return dto;

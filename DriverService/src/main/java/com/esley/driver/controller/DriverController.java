@@ -33,13 +33,13 @@ public class DriverController {
         return ResponseEntity.ok(driverService.findAllPage(pageable).map(driver -> modelMapper.map(driver, DriverDto.class)));
     }
 
-    @GetMapping("/{email}")
-    public ResponseEntity getSingleDriver(@PathVariable("email") String email) {
+    @GetMapping("/{id}")
+    public ResponseEntity getSingleDriver(@PathVariable("id") Integer id) {
 //        return driverRepository.findById(driverId)
 //                .map(driver -> modelMapper.map(driver, DriverDto.class))
 //                .map(driverDto -> new ResponseEntity<>(driverDto, HttpStatus.OK))
 //                .orElseThrow(() -> new EntityNotFoundException(Driver.class, driverId));
-        return ResponseEntity.ok(modelMapper.map(driverService.findDriverByEmail(email), DriverDto.class));
+        return ResponseEntity.ok(modelMapper.map(driverService.findDriverById(id), DriverDto.class));
     }
 
     @PostMapping

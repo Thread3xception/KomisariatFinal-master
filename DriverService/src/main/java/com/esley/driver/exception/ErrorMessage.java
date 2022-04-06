@@ -9,7 +9,7 @@ import java.util.Date;
 @Value
 @Builder
 public class ErrorMessage {
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss", timezone = "CET")
     Date timestamp;
     int code;
     String status;

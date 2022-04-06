@@ -5,10 +5,20 @@
         xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
-    <changeSet id="tables" author="esley" dbms="mysql">
-        <sqlFile encoding="utf8"
-                 path="changelog/sql/tables.sql"
-                 splitStatements="true"
-                 stripComments="true"/>
+    <changeSet author="Liquibase" id="2">
+        <createTable tableName="liquibase_ticket">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="driver_id" type="INT">
+                <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="data" type="VARCHAR(255)">
+                <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="country" type="VARCHAR(255)">
+                <constraints nullable="false" unique="false"/>
+            </column>
+        </createTable>
     </changeSet>
 </databaseChangeLog>
