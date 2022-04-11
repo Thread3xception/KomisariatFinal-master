@@ -5,7 +5,6 @@ import com.esley.ticketoffense.validation.annotation.CorrectScore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.PositiveOrZero;
 
 @Data
@@ -21,6 +20,4 @@ public class CreateTicketOffenseCommand {
     private double price;
     @PositiveOrZero(message = "SCORE_POSITIVE_OR_ZERO")
     private int score;
-    @NotEmpty(message = "COUNTRY_NOT_EMPTY")
-    private String country;
 }

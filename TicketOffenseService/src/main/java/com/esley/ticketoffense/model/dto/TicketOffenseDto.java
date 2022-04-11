@@ -14,5 +14,4 @@ public class TicketOffenseDto {
     private int offenseId;
     private double price;
     private int score;
-    private String country;
 }

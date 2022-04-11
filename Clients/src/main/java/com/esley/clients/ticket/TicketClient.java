@@ -13,6 +13,8 @@ public interface TicketClient {
     Ticket findTicket(@PathVariable("id") Integer id);
 
     @GetMapping("/list/{driverId}")
-    @PreAuthorize("hasRole('ROLE_POLICEMAN')")
     Set<Ticket> findTicketListByDriverId(@PathVariable("driverId") Integer driverId);
+
+    @GetMapping("/score/{ticketId}")
+    int getSumOfScoreTicketById(@PathVariable("ticketId") Integer ticketId);
 }

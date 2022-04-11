@@ -1,5 +1,6 @@
 package com.esley.ticket.model;
 
+import com.esley.ticket.service.TicketService;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,7 +34,6 @@ public class Ticket {
         this.data = data;
         this.country = country;
     }
-
 
     public boolean checkStatus() {
         long diff = ChronoUnit.DAYS.between(data, LocalDate.now());

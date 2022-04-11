@@ -9,7 +9,7 @@
 //@Getter
 //@Setter
 //public class EmailConfiguration {
-//    @Value("${spring.mail.host}")
+//    @Value("${spring.mail.username}")
 //    private String host;
 //    @Value("${spring.mail.port}")
 //    private int port;

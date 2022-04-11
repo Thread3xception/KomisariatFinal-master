@@ -21,4 +21,8 @@ public class FeignService {
     public Set<Ticket> findTicketListForDriver(Integer id) {
         return ticketClient.findTicketListByDriverId(id);
     }
+
+    public int getSumOfScoreTicketById(Integer id) {
+        return ticketClient.getSumOfScoreTicketById(id);
+    }
 }

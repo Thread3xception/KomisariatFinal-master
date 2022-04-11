@@ -16,6 +16,7 @@ public class CreateDriverCommandToDriverConverter implements Converter<CreateDri
         return new Driver(0, command.getEmail(),
                 command.getName(),
                 command.getSurname(),
+                0,
                 command.getYearsOld());
                 //new HashSet<>());
     }

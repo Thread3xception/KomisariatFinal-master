@@ -23,6 +23,7 @@ public class Driver {
     private String email;
     private String name;
     private String surname;
+    private int score;
     private int yearsOld;
 //    @OneToMany(mappedBy = "driver", cascade = CascadeType.MERGE)
 //    private Set<Ticket> tickets;

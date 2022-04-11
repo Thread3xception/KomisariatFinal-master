@@ -18,7 +18,6 @@ public class TicketOffenseToTicketOffenseDtoConverter implements Converter<Ticke
                 .offenseId(source.getOffenseId())
                 .price(source.getPrice())
                 .score(source.getScore())
-                .country(source.getCountry())
                 .build();
 
         return dto;

@@ -33,13 +33,13 @@ public class DriverController {
         return ResponseEntity.ok(driverService.findAllPage(pageable).map(driver -> modelMapper.map(driver, DriverDto.class)));
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity getSingleDriver(@PathVariable("id") Integer id) {
+    @GetMapping("/{email}")
+    public ResponseEntity getSingleDriver(@PathVariable("email") String email) {
 //        return driverRepository.findById(driverId)
 //                .map(driver -> modelMapper.map(driver, DriverDto.class))
 //                .map(driverDto -> new ResponseEntity<>(driverDto, HttpStatus.OK))
 //                .orElseThrow(() -> new EntityNotFoundException(Driver.class, driverId));
-        return ResponseEntity.ok(modelMapper.map(driverService.findDriverById(id), DriverDto.class));
+        return ResponseEntity.ok(modelMapper.map(driverService.findDriverByEmail(email), DriverDto.class));
     }
 
     @PostMapping
@@ -63,5 +63,12 @@ public class DriverController {
 //                .map(ticketDto -> new ResponseEntity<>(ticketDto, HttpStatus.OK))
 //                .orElseThrow(() -> new EntityNotFoundException(Ticket.class, ticketId));
         return ResponseEntity.ok(feignService.findTicketById(ticketId));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity editDriver(@PathVariable("driverId") int driverId, @RequestBody @Valid CreateDriverCommand command) {
+        Driver driver = driverService.editDriver(driverId, command);
+        return new ResponseEntity<>(modelMapper.map(driver, DriverDto.class), HttpStatus.OK);
+
     }
 }

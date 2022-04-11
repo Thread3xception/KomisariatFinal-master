@@ -20,7 +20,6 @@ public class CreateTicketOffenseCommandToTicketOffenseConverter implements Conve
         return new TicketOffense(feignService.findTicketById(command.getTicketId()).getId(),
                 feignService.findOffenseById(command.getOffenseId()).getId(),
                 command.getPrice(),
-                command.getScore(),
-                command.getCountry());
+                command.getScore());
     }
 }

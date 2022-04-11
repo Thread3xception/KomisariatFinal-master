@@ -4,6 +4,7 @@ import com.esley.clients.ticket.Ticket;
 import com.esley.driver.controller.DriverController;
 import com.esley.driver.model.Driver;
 import com.esley.driver.model.dto.DriverDto;
+import com.esley.driver.service.DriverService;
 import com.esley.driver.service.FeignService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.Converter;
@@ -21,6 +22,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 public class DriverToDriverDtoConverter implements Converter<Driver, DriverDto> {
 
     private final FeignService feignService;
+    private final DriverService driverService;
 
     @Override
     public DriverDto convert(MappingContext<Driver, DriverDto> mappingContext) {
@@ -31,7 +33,7 @@ public class DriverToDriverDtoConverter implements Converter<Driver, DriverDto> 
                 .name(source.getName())
                 .surname(source.getSurname())
                 .yearsOld(source.getYearsOld())
-                //.score(source.getTotalScore())
+                .score(driverService.getTotalScore(source.getId()))
                 //.tickets(source.getTickets())
                 //.ticketIds(source.getTickets().stream().map(Ticket::getId).collect(Collectors.toSet()))
                 .ticketIds(feignService.findTicketListForDriver(source.getId()).stream().map(Ticket::getId).collect(Collectors.toSet()))
@@ -39,7 +41,7 @@ public class DriverToDriverDtoConverter implements Converter<Driver, DriverDto> 
 
         dto.add(linkTo(methodOn(DriverController.class).getAllDrivers(Pageable.unpaged())).withRel("all-drivers"));
         dto.add(linkTo(methodOn(DriverController.class).getDriverTickets(source.getId())).withRel("all-tickets-of-driver"));
-        dto.add(linkTo(methodOn(DriverController.class).getSingleDriver(source.getId())).withRel("single-driver-details"));
+        dto.add(linkTo(methodOn(DriverController.class).getSingleDriver(source.getEmail())).withRel("single-driver-details"));
         dto.add(linkTo(methodOn(DriverController.class).getSingleTicket(source.getId())).withRel("single-ticket-details"));
 
         return dto;

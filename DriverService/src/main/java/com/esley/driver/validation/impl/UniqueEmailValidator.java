@@ -14,6 +14,7 @@ public class UniqueEmailValidator implements ConstraintValidator<UniqueEmail, St
 
     private final DriverRepository repository;
 
+    @Override
     public boolean isValid(String email, ConstraintValidatorContext context) {
         return !repository.existsByEmail(email);
     }

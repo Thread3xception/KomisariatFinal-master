@@ -50,6 +50,18 @@ public class TicketController {
         return ResponseEntity.ok(modelMapper.map(ticketService.findTicketById(ticketId), TicketDto.class));
     }
 
+    @GetMapping("/score/{ticketId}")
+    @PreAuthorize("hasRole('ROLE_POLICEMAN')")
+    public ResponseEntity getSumOfScoreSingleTicketById(@PathVariable("ticketId") Integer ticketId) {
+        return ResponseEntity.ok(ticketService.getTotalScore(ticketId));
+    }
+
+    @GetMapping("/price/{ticketId}")
+    @PreAuthorize("hasRole('ROLE_POLICEMAN')")
+    public ResponseEntity getSumOfPriceSingleTicketById(@PathVariable("ticketId") Integer ticketId) {
+        return ResponseEntity.ok(ticketService.getTotalPrice(ticketId));
+    }
+
     @GetMapping("/list/{driverId}")
     @PreAuthorize("hasRole('ROLE_POLICEMAN')")
     public ResponseEntity getTicketListForDriver(@PathVariable("driverId") Integer driverId) {

@@ -23,14 +23,12 @@ public class TicketOffense {
     private int offenseId;
     private double price;
     private int score;
-    private String country;
 
-    public TicketOffense(int ticketId, int offenseId, double price, int score, String country) {
+    public TicketOffense(int ticketId, int offenseId, double price, int score) {
         this.ticketId = ticketId;
         this.offenseId = offenseId;
         this.price = price;
         this.score = score;
-        this.country = country;
 
 //        ticket.getTicketOffenses().add(this);
 //        offense.getTicketOffenses().add(this);

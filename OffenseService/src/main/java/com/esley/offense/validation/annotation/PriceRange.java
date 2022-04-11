@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = PriceRangeValidator.class)
 public @interface PriceRange {
-    String message() default "PRICE_FROM_OR_PRICE_TO_INVALID";
+    String message() default "PRICE_RANGE_ERROR";
 
     Class<?>[] groups() default {};
 
