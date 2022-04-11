@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.sql.*;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import static java.lang.String.format;
@@ -77,19 +78,18 @@ public class DriverService {
 
 
 
-    @Scheduled(fixedRate = 30000)
+    @Scheduled(fixedRate = 15000)
     @Transactional
     public void checkScore() {
         List<Driver> drivers = driverRepository.findAll();
-        for(Driver driver : drivers) {
-            int id = driver.getId();
-            int score = getTotalScore(driver.getId());
+        drivers.stream()
+                .filter(Objects::nonNull)
+                .forEach(d -> driverRepository.updateScore(d.getId(), getTotalScore(d.getId())));
 
-            if(score >= 24) {
-                driverRepository.updateScore(id, score);
-                sendMail(driver);
-            }
-        }
+        drivers.stream()
+                .filter(Objects::nonNull)
+                .filter(d -> d.getScore() >= 24)
+                .forEach(d -> sendMail(d));
     }
 
     public void sendMail(Driver driver) {
