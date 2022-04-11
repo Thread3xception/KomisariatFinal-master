@@ -84,8 +84,11 @@ public class DriverService {
         for(Driver driver : drivers) {
             int id = driver.getId();
             int score = getTotalScore(driver.getId());
-            driverRepository.updateScore(id, score);
-            sendMail(driver);
+
+            if(score >= 24) {
+                driverRepository.updateScore(id, score);
+                sendMail(driver);
+            }
         }
     }
 
