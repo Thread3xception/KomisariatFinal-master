@@ -62,6 +62,8 @@ public class DriverService {
                     driver.setSurname(command.getSurname());
                     driver.setYearsOld(command.getYearsOld());
                     driver.setScore(command.getScore());
+
+                    driverRepository.saveAndFlush(driver);
                     return driver;
                 })
                 .orElseThrow(() -> new DriverNotFoundException("Driver with id: %s not found!"));
