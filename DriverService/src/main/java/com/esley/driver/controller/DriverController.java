@@ -38,7 +38,8 @@ public class DriverController {
 //        return driverRepository.findById(driverId)
 //                .map(driver -> modelMapper.map(driver, DriverDto.class))
 //                .map(driverDto -> new ResponseEntity<>(driverDto, HttpStatus.OK))
-//                .orElseThrow(() -> new EntityNotFoundException(Driver.class, driverId));
+//                .orElseThrow(() -> new EntityNotFoundException(Driver.class, driverId))
+        // test
         return ResponseEntity.ok(modelMapper.map(driverService.findDriverByEmail(email), DriverDto.class));
     }
 
