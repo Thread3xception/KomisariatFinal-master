@@ -41,6 +41,7 @@ public class DriverController {
 //                .orElseThrow(() -> new EntityNotFoundException(Driver.class, driverId))
         // test-github
         // test-github2
+        // test-bitbucket
         return ResponseEntity.ok(modelMapper.map(driverService.findDriverByEmail(email), DriverDto.class));
     }
 
