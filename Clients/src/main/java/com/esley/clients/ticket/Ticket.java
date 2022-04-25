@@ -11,7 +11,7 @@ import java.time.temporal.ChronoUnit;
 @Setter
 public class Ticket {
     private int id;
-    private Driver driver;
+    private int driverId;
     private LocalDate data;
     private String country;
 }

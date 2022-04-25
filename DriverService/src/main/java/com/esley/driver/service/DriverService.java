@@ -80,7 +80,7 @@ public class DriverService {
 
 
 
-    @Scheduled(fixedRate = 15000)
+    @Scheduled(fixedRate = 150000)
     @Transactional
     public void checkScore() {
         List<Driver> drivers = driverRepository.findAll();

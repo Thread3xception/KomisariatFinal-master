@@ -60,7 +60,7 @@ public class DriverController {
     }
 
 
-    @GetMapping("/{driverId}/ticket/{ticketId}")
+    @GetMapping("/ticket/{ticketId}")
     public ResponseEntity getSingleTicket(@PathVariable("ticketId") Integer ticketId) {
 //        return ticketRepository.findById(ticketId).map(ticket -> modelMapper.map(ticket, TicketDto.class))
 //                .map(ticketDto -> new ResponseEntity<>(ticketDto, HttpStatus.OK))
