@@ -18,6 +18,5 @@ public class CreateDriverCommandToDriverConverter implements Converter<CreateDri
                 command.getSurname(),
                 0,
                 command.getYearsOld());
-                //new HashSet<>());
     }
 }
