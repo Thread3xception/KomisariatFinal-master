@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS TICKET
+(
+    id SERIAL PRIMARY KEY,
+    driver_id INT NOT NULL,
+    data DATE NOT NULL,
+    country VARCHAR(255) NOT NULL
+);
+
+

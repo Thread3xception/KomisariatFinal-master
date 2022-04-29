@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS DRIVER
+(
+    id SERIAL PRIMARY KEY,
+    email VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    surname VARCHAR(255) NOT NULL,
+    score INT NOT NULL,
+    years_Old INT NOT NULL
+);
